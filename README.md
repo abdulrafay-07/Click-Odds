@@ -1,0 +1,1 @@
+"Click Odds" is a simple yet addictive browser-based game where your goal is to click the button and increase your score. But here's the catch: as your score increases, so do the odds of the randomly generated number matching your current score. If it matches, the game ends! Can you beat the increasing odds and achieve the highest score possible?
