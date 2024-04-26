@@ -29,7 +29,7 @@ const Home = () => {
                 <button
                     onClick={handlePlayClick}
                     disabled={!username.trim()}
-                    className='button px-4 py-2 md:px-6 md:py-4 bg-blue-500 md:text-xl rounded-lg'
+                    className='button px-4 py-2 md:px-6 md:py-4 bg-blue-500 md:text-xl rounded-lg w-24 md:w-32'
                 >
                     Play
                 </button>

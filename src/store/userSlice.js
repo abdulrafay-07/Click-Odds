@@ -10,12 +10,7 @@ const userSlice = createSlice({
     reducers: {
         setUser(state, action) {
             const { username, highestScore } = action.payload;
-            const existingUser = state.users.find(user => user.username === username);
-            if (existingUser) {
-                existingUser.highestScore = user.highestScore;
-            } else {
-                state.users.push({ username, highestScore });
-            }
+            state.users.push({ username, highestScore });
         },
         addScore(state, action) {
             const { username, highestScore } = action.payload;

@@ -12,7 +12,7 @@ const Play = () => {
 
     const user = 
         useSelector(state => state.user.users)
-        .find(user => user.username == slug);
+        .find(user => user.username === slug);
 
     const dispatch = useDispatch();
 
@@ -74,15 +74,11 @@ const Play = () => {
         setCount(0);
     }
 
-    const handleSubmit = () => {
-        dispatch(addScore({ username: user.username, highestScore }));
-    }
-
     return (
         <div className='h-screen flex flex-col justify-center items-center gap-12 px-4 font-primary'>
             <h2 className='text-2xl'>Highest Score: {highestScore}</h2>
             <h1 className={`${gameEnd ? 'text-2xl text-center' : 'hidden'}`}>
-                You lost at {count + 1}, Your score is {count}, {count < 10 ? quotes[0] : count < 20 ? quotes[1] : count < 25 ? quotes[2] : count < 50 ? quotes[3] : quotes[4] }
+                You lost at {count + 1}, Your score was {count}, {count < 10 ? quotes[0] : count < 20 ? quotes[1] : count < 25 ? quotes[2] : count < 50 ? quotes[3] : quotes[4] }
             </h1>
             <div className='flex items-center'>
                 <button 
@@ -95,9 +91,6 @@ const Play = () => {
             </div>
             {gameEnd && (
                 <div className='mt-4 flex gap-4'>
-                    <button onClick={handleSubmit} className='button px-4 py-2 bg-blue-500 text-white rounded'>
-                        Submit High Score
-                    </button>
                     <button onClick={handleReset} className='button px-4 py-2 bg-green-500 text-white rounded'>Reset Game</button>
                 </div>
             )}
