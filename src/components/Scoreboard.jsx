@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Submit = () => {
+const Scoreboard = () => {
     return (
         <div className='h-screen flex justify-center items-center'>
-            (Handle Submit)
+            <button></button>
         </div>
     )
 }
 
-export default Submit;
+export default Scoreboard;

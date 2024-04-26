@@ -1,10 +1,22 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { addScore } from '../store/userSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Play = () => {
     const [count, setCount] = useState(0);
     const [highestScore, setHighestScore] = useState(0);
     const [gameEnd, setGameEnd] = useState(false);
+
+    const { slug } = useParams();
+
+    const user = 
+        useSelector(state => state.user.users)
+        .find(user => user.username == slug);
+
+    const dispatch = useDispatch();
+
+    const navigate = useNavigate();
 
     const quotes = ['You can do better!', 'Keep going!', 'Keep pushing!', 'Way to go!', 'Insane!']
 
@@ -62,6 +74,10 @@ const Play = () => {
         setCount(0);
     }
 
+    const handleSubmit = () => {
+        dispatch(addScore({ username: user.username, highestScore }));
+    }
+
     return (
         <div className='h-screen flex flex-col justify-center items-center gap-12 px-4 font-primary'>
             <h2 className='text-2xl'>Highest Score: {highestScore}</h2>
@@ -78,13 +94,11 @@ const Play = () => {
                 </button>
             </div>
             {gameEnd && (
-                <div className="mt-4 flex gap-4">
-                    <Link to='/submit'>
-                        <button className="button px-4 py-2 bg-blue-500 text-white rounded">
-                            Submit Score
-                        </button>
-                    </Link>
-                    <button onClick={handleReset} className="button px-4 py-2 bg-green-500 text-white rounded">Reset Game</button>
+                <div className='mt-4 flex gap-4'>
+                    <button onClick={handleSubmit} className='button px-4 py-2 bg-blue-500 text-white rounded'>
+                        Submit High Score
+                    </button>
+                    <button onClick={handleReset} className='button px-4 py-2 bg-green-500 text-white rounded'>Reset Game</button>
                 </div>
             )}
         </div>

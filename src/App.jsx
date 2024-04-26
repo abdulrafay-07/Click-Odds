@@ -1,4 +1,4 @@
-import { Home, Play, Submit } from './components/index';
+import { Home, Play, Scoreboard } from './components/index';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 const App = () => {
@@ -6,8 +6,8 @@ const App = () => {
         <Router>
             <Routes>
                 <Route path='/'  element={<Home />} />
-                <Route path='/play' element={<Play />} />
-                <Route path='/submit' element={<Submit />} />
+                <Route path='/play/:slug' element={<Play />} />
+                <Route path='/scoreboard' element={<Scoreboard />} />
             </Routes>
         </Router>
     )
