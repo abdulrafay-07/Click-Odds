@@ -74,6 +74,15 @@ const Play = () => {
         setCount(0);
     }
 
+    const handleSubmit = () => {
+        if (user != undefined) {
+            dispatch(addScore({ username: user.username, highestScore }));
+            navigate('/scoreboard');
+        } else {
+            navigate('/');
+        }
+    }
+
     return (
         <div className='h-screen flex flex-col justify-center items-center gap-12 px-4 font-primary'>
             <h2 className='text-2xl'>Highest Score: {highestScore}</h2>
@@ -91,6 +100,9 @@ const Play = () => {
             </div>
             {gameEnd && (
                 <div className='mt-4 flex gap-4'>
+                    <button onClick={handleSubmit} className='button px-4 py-2 bg-blue-500 text-white rounded'>
+                        Submit High Score
+                    </button>
                     <button onClick={handleReset} className='button px-4 py-2 bg-green-500 text-white rounded'>Reset Game</button>
                 </div>
             )}
